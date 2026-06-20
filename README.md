@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Go Business - Referral Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A secure, responsive, and intuitive web-based referral management system built for **Go Business**. This application allows partners to log in, view key performance metrics, copy referral codes, search and sort referral histories, and inspect specific referral records in detail.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+- **🔒 Secure Authentication:** JWT-based protection with session cookies (`jwt_token`).
+- **📊 Interactive Overview Panel:** Real-time metrics grid showcasing total referrals, active referrals, and total earnings.
+- **💼 Service Summary:** Clean visual breakdown of referrals and earnings per service tier.
+- **🔗 Share Referral Widget:** Quick clip-to-copy helper fields for referral links and referral codes.
+- **📅 All Referrals Table:**
+  - Dynamic name/service search (sends live API filter query `?search=`).
+  - Date sorting controls (descending/ascending `?sort=`).
+  - Client-side pagination (10 rows per page with numbered pages).
+  - Timezone-safe date formatting (`YYYY/MM/DD`).
+  - Currency formatting (`USD` en-US style).
+- **🔎 Detailed Referral View:** Specialized deep link inspector pages (`/referral/:id`).
+- **🎨 Premium Aesthetics:** Responsive dark-mode layout, glassmorphism card panels (`backdrop-filter: blur`), custom Plus Jakarta Sans typography, and fluid micro-animations (hover lifts, fade-ins).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📁 Project Structure
 
-### `npm test`
+This project has been restructured in a clean, modular format:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+src/
+├── api/
+│   ├── auth.js            # Handles cookie storage and login API POST calls
+│   └── referrals.js       # Handles API GET queries for dashboard and detail views
+├── components/
+│   ├── ProtectedRoute.jsx # Route guard verifying cookie presence
+│   ├── Navbar.jsx         # Header & Footer shell templates
+│   ├── Overview.jsx       # Overview grids and summary cards
+│   └── ReferralTable.jsx  # Table layout and formatted row components
+├── pages/
+│   ├── Login.jsx          # Login form view
+│   ├── Dashboard.jsx      # Main dashboard view combining all widgets
+│   ├── ReferralDetails.jsx# Individual referral detail page
+│   └── NotFound.jsx       # Fallback 404 page
+├── App.js                 # Routing rules and import mappings
+├── App.css                # Premium responsive styling & dark-theme variables
+├── index.js               # Entry point mounting <App />
+└── index.css              # Reset standard margin/typography rules
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠️ Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Prerequisites
+* [Node.js](https://nodejs.org/) (LTS recommended)
+* npm (comes with Node.js)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Installation
+Clone the repository and install the dependencies:
+```bash
+npm install
+```
 
-### `npm run eject`
+### 3. Running Locally
+Start the development server:
+```bash
+npm start
+```
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 4. Build for Production
+To build a optimized bundle for production:
+```bash
+npm run build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧪 Credentials (Testing)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Use these credentials to log in on the `/login` route:
+* **Email:** `admin@example.com`
+* **Password:** `admin123`
